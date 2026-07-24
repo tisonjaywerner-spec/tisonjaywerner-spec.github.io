@@ -10,6 +10,7 @@
   --terracotta-dark: #B35F45;
   --white: #FFFFFF;
   --border: #DDD8CB;
+  --stripe: #F3E1D9;
 }
 
 * { box-sizing: border-box; }
@@ -151,12 +152,28 @@ body {
 
 .project-card a:hover { text-decoration: underline; }
 
+/* Side-by-side layout for the Tech Stack and Skills tables */
+.table-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.table-col {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.table-col h2 {
+  font-size: 1.5rem;
+}
+
 /* Shared table styling — Tech Stack and Skills now match */
 .tech-stack-table,
 .skills-table {
   width: 100%;
   border-collapse: collapse;
-  max-width: 600px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -184,7 +201,7 @@ body {
 
 .tech-stack-table tbody tr:nth-child(even),
 .skills-table tbody tr:nth-child(even) {
-  background: var(--cream);
+  background: var(--stripe);
 }
 
 .contact-list {

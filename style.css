@@ -1,17 +1,22 @@
 :root {
-  --navy: #1a2b45;
-  --navy-dark: #101c2e;
-  --teal: #2a9d8f;
-  --teal-dark: #21807a;
-  --bg-alt: #f4f6f8;
-  --text: #222;
-  --text-light: #555;
+  /* Claude-inspired warm palette */
+  --cream: #F0EEE6;
+  --cream-alt: #E8E4D9;
+  --charcoal: #1F1E1D;
+  --charcoal-soft: #30291F;
+  --text: #1F1E1D;
+  --text-light: #6B6558;
+  --terracotta: #CC785C;
+  --terracotta-dark: #B35F45;
+  --white: #FFFFFF;
+  --border: #DDD8CB;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
+  background: var(--cream);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text);
   line-height: 1.6;
@@ -20,7 +25,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  background: var(--navy);
+  background: var(--charcoal);
   z-index: 100;
 }
 
@@ -40,31 +45,40 @@ body {
 }
 
 .navbar nav a {
-  color: #dbe4ee;
+  color: #dbd6c9;
   text-decoration: none;
   margin-left: 24px;
   font-size: 0.95rem;
 }
 
-.navbar nav a:hover { color: var(--teal); }
+.navbar nav a:hover { color: var(--terracotta); }
 
+/* HERO
+   Background: Gustie Cup stage photo at images/gustie-cup-web.jpg (compressed for web). */
 .hero {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  background-image:
+    linear-gradient(135deg, rgba(31, 30, 29, 0.82) 0%, rgba(204, 120, 92, 0.55) 100%),
+    url('images/gustie-cup-web.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
-  padding: 100px 24px;
+  padding: 120px 24px;
   text-align: center;
 }
 
 .hero h1 {
   font-size: 2.6rem;
   margin: 0 0 12px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
 .hero .tagline {
   font-size: 1.2rem;
-  color: #cfe0e8;
+  color: #f1ede3;
   max-width: 600px;
   margin: 0 auto 32px;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.35);
 }
 
 .hero-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -76,13 +90,14 @@ body {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
+  transition: background 0.15s ease, opacity 0.15s ease;
 }
 
-.btn-primary { background: var(--teal); color: #fff; }
-.btn-primary:hover { background: var(--teal-dark); }
+.btn-primary { background: var(--terracotta); color: #fff; }
+.btn-primary:hover { background: var(--terracotta-dark); }
 
 .btn-secondary { background: transparent; color: #fff; border: 1px solid #fff; }
-.btn-secondary:hover { background: rgba(255,255,255,0.1); }
+.btn-secondary:hover { background: rgba(255,255,255,0.12); }
 
 .section {
   max-width: 1000px;
@@ -90,14 +105,14 @@ body {
   padding: 72px 24px;
 }
 
-.section.alt { background: var(--bg-alt); max-width: none; }
+.section.alt { background: var(--cream-alt); max-width: none; }
 .section.alt > * { max-width: 1000px; margin-left: auto; margin-right: auto; }
 
 .section h2 {
   font-size: 1.8rem;
-  color: var(--navy);
+  color: var(--charcoal);
   margin-bottom: 20px;
-  border-bottom: 3px solid var(--teal);
+  border-bottom: 3px solid var(--terracotta);
   display: inline-block;
   padding-bottom: 6px;
 }
@@ -111,46 +126,65 @@ body {
 }
 
 .project-card {
-  background: #fff;
-  border: 1px solid #e0e4e8;
+  background: var(--white);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 24px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.project-card h3 { margin-top: 0; color: var(--navy); }
+.project-card h3 { margin-top: 0; color: var(--charcoal); }
 
 .project-tags {
   font-size: 0.8rem;
-  color: var(--teal-dark);
+  color: var(--terracotta-dark);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 600;
 }
 
 .project-card a {
-  color: var(--teal-dark);
+  color: var(--terracotta-dark);
   font-weight: 600;
   text-decoration: none;
 }
 
 .project-card a:hover { text-decoration: underline; }
 
+/* Shared table styling — Tech Stack and Skills now match */
+.tech-stack-table,
 .skills-table {
   width: 100%;
   border-collapse: collapse;
   max-width: 600px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
+.tech-stack-table th, .tech-stack-table td,
 .skills-table th, .skills-table td {
   text-align: left;
   padding: 10px 14px;
-  border-bottom: 1px solid #e0e4e8;
+  border-bottom: 1px solid var(--border);
 }
 
+.tech-stack-table th,
 .skills-table th {
-  background: var(--navy);
+  background: var(--charcoal);
   color: #fff;
+}
+
+.tech-stack-table tbody tr:last-child td,
+.skills-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tech-stack-table tbody tr:nth-child(even),
+.skills-table tbody tr:nth-child(even) {
+  background: var(--cream);
 }
 
 .contact-list {
@@ -160,13 +194,13 @@ body {
 
 .contact-list li { margin-bottom: 10px; }
 
-.contact-list a { color: var(--teal-dark); text-decoration: none; }
+.contact-list a { color: var(--terracotta-dark); text-decoration: none; }
 .contact-list a:hover { text-decoration: underline; }
 
 footer {
   text-align: center;
   padding: 32px 24px;
-  background: var(--navy-dark);
-  color: #9aa8b8;
+  background: var(--charcoal);
+  color: #b0a99a;
   font-size: 0.85rem;
 }
